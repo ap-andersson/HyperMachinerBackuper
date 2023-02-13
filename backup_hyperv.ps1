@@ -32,6 +32,9 @@ foreach ( $MachineName in $machines )
     New-Item -ItemType directory -Path $Destination
     Copy-Item -Path $LocalBackupPath$ZipFilename -Destination $Destination -Recurse -Force
 
+    Get-ChildItem -Path $Target -Recurse | Remove-Item -force -recurse
+    Remove-Item $Target -Force 
+
     # No removal in this script
     #Remove-Item -Path $LocalBackupPath$ZipFilename
     #Remove-Item $Target -Recurse
